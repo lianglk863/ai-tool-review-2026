@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工具评测网 - 发现最好的AI工具 | 2026最新AI软件推荐</title>
+    <meta name="description" content="AI工具评测网提供2026年最新AI工具深度评测，包括ChatGPT、Midjourney、Claude等主流AI软件的使用教程、价格对比、功能分析，帮你找到最适合的AI工具。">
+    <meta name="keywords" content="AI工具,AI软件,人工智能工具,ChatGPT,Midjourney,AI评测,AI推荐,免费AI工具">
+    <meta name="author" content="AI工具评测网">
+    <link rel="canonical" href="https://ai-tool-review.vercel.app/">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="AI工具评测网 - 发现最好的AI工具">
+    <meta property="og:description" content="2026年最新AI工具深度评测，帮你找到最适合的AI软件">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ai-tool-review.vercel.app/">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "AI工具评测网",
+      "url": "https://ai-tool-review.vercel.app/",
+      "description": "AI工具深度评测与推荐",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ai-tool-review.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+        
+        /* Header */
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .logo a { color: white; text-decoration: none; }
+        nav { display: flex; gap: 2rem; }
+        nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
+        nav a:hover { color: white; }
+        
+        /* Hero */
+        .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 4rem 2rem; text-align: center; }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+        .search-box { max-width: 600px; margin: 0 auto; display: flex; background: white; border-radius: 50px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .search-box input { flex: 1; padding: 1rem 1.5rem; border: none; outline: none; font-size: 1rem; }
+        .search-box button { padding: 1rem 2rem; background: #ff6b6b; color: white; border: none; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+        .search-box button:hover { background: #ff5252; }
+        
+        /* Categories */
+        .categories { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+        .categories h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #333; }
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 1.5rem; }
+        .category-card { background: white; border-radius: 12px; padding: 1.5rem; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .category-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .category-icon { font-size: 2.5rem; margin-bottom: 0.8rem; }
+        .category-card h3 { font-size: 1rem; color: #333; }
+        
+        /* Tools */
+        .tools { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+        .tools h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #333; }
+        .tool-card { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); display: flex; gap: 2rem; align-items: flex-start; transition: transform 0.3s; }
+        .tool-card:hover { transform: translateY(-3px); }
+        .tool-logo { width: 80px; height: 80px; border-radius: 12px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white; flex-shrink: 0; }
+        .tool-info { flex: 1; }
+        .tool-info h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #333; }
+        .tool-rating { color: #ffc107; margin-bottom: 0.5rem; }
+        .tool-info p { color: #666; font-size: 0.95rem; margin-bottom: 1rem; }
+        .tool-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .tag { background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; color: #666; }
+        .tool-link { display: inline-block; padding: 0.5rem 1.5rem; background: #667eea; color: white; text-decoration: none; border-radius: 6px; font-size: 0.9rem; transition: background 0.3s; }
+        .tool-link:hover { background: #5568d3; }
+        
+        /* Articles */
+        .articles { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+        .articles h2 { text-align: center; font-size: 2rem; margin-bottom: 2rem; color: #333; }
+        .article-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+        .article-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: transform 0.3s; }
+        .article-card:hover { transform: translateY(-5px); }
+        .article-img { height: 200px; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; }
+        .article-content { padding: 1.5rem; }
+        .article-content h3 { font-size: 1.1rem; margin-bottom: 0.8rem; color: #333; }
+        .article-content p { color: #666; font-size: 0.9rem; margin-bottom: 1rem; }
+        .article-meta { display: flex; justify-content: space-between; color: #999; font-size: 0.85rem; }
+        
+        /* Footer */
+        footer { background: #1a1a2e; color: white; padding: 3rem 2rem 1rem; margin-top: 4rem; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-col h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.5rem; }
+        .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; }
+        .footer-col ul li a:hover { color: white; }
+        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .tool-card { flex-direction: column; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="logo"><a href="/">AI工具评测网</a></div>
+            <nav>
+                <a href="/">首页</a>
+                <a href="#tools">工具评测</a>
+                <a href="#articles">教程文章</a>
+                <a href="/about.html">关于我们</a>
+                <a href="/contact.html">联系我们</a>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <h1>发现最好的 AI 工具</h1>
+        <p>2026年最新AI工具深度评测，帮你找到最适合的AI软件。我们测试、对比、评分，让你少走弯路。</p>
+        <div class="search-box">
+            <input type="text" placeholder="搜索AI工具（如：ChatGPT、Midjourney...）">
+            <button>搜索</button>
+        </div>
+    </section>
+    
+    <section class="categories">
+        <h2>🔍 按分类浏览</h2>
+        <div class="category-grid">
+            <a href="#writing" class="category-card">
+                <div class="category-icon">✍️</div>
+                <h3>写作工具</h3>
+            </a>
+            <a href="#image" class="category-card">
+                <div class="category-icon">🎨</div>
+                <h3>图像生成</h3>
+            </a>
+            <a href="#video" class="category-card">
+                <div class="category-icon">🎬</div>
+                <h3>视频制作</h3>
+            </a>
+            <a href="#code" class="category-card">
+                <div class="category-icon">💻</div>
+                <h3>编程助手</h3>
+            </a>
+            <a href="#audio" class="category-card">
+                <div class="category-icon">🎵</div>
+                <h3>音频处理</h3>
+            </a>
+            <a href="#office" class="category-card">
+                <div class="category-icon">📊</div>
+                <h3>办公效率</h3>
+            </a>
+        </div>
+    </section>
+    
+    <section class="tools" id="tools">
+        <h2>🔥 热门AI工具评测</h2>
+        
+        <div class="tool-card" id="writing">
+            <div class="tool-logo">💬</div>
+            <div class="tool-info">
+                <h3>ChatGPT (OpenAI)</h3>
+                <div class="tool-rating">★★★★★ 4.8/5.0</div>
+                <p>最流行的AI对话工具，支持写作、编程、翻译、分析等多种任务。GPT-4o模型支持图像输入，功能强大。</p>
+                <div class="tool-tags">
+                    <span class="tag">写作</span>
+                    <span class="tag">编程</span>
+                    <span class="tag">翻译</span>
+                    <span class="tag">免费可用</span>
+                </div>
+                <a href="/articles/chatgpt-review.html" class="tool-link">查看详细评测</a>
+            </div>
+        </div>
+        
+        <div class="tool-card" id="image">
+            <div class="tool-logo">🎨</div>
+            <div class="tool-info">
+                <h3>Midjourney</h3>
+                <div class="tool-rating">★★★★★ 4.7/5.0</div>
+                <p>最强大的AI图像生成工具，生成质量极高，艺术风格丰富。通过Discord使用，适合设计师和创作者。</p>
+                <div class="tool-tags">
+                    <span class="tag">图像生成</span>
+                    <span class="tag">设计</span>
+                    <span class="tag">艺术创作</span>
+                </div>
+                <a href="/articles/midjourney-review.html" class="tool-link">查看详细评测</a>
+            </div>
+        </div>
+        
+        <div class="tool-card" id="code">
+            <div class="tool-logo">💻</div>
+            <div class="tool-info">
+                <h3>GitHub Copilot</h3>
+                <div class="tool-rating">★★★★☆ 4.5/5.0</div>
+                <p>AI编程助手，支持多种编程语言，实时代码补全和建议。大幅提升开发效率，学生可免费使用。</p>
+                <div class="tool-tags">
+                    <span class="tag">编程</span>
+                    <span class="tag">代码补全</span>
+                    <span class="tag">开发工具</span>
+                </div>
+                <a href="/articles/copilot-review.html" class="tool-link">查看详细评测</a>
+            </div>
+        </div>
+        
+        <div class="tool-card" id="video">
+            <div class="tool-logo">🎬</div>
+            <div class="tool-info">
+                <h3>Runway ML</h3>
+                <div class="tool-rating">★★★★☆ 4.4/5.0</div>
+                <p>AI视频生成和编辑工具，支持文本生成视频、视频风格转换、绿幕抠像等功能。创作者必备。</p>
+                <div class="tool-tags">
+                    <span class="tag">视频制作</span>
+                    <span class="tag">AI生成</span>
+                    <span class="tag">视频编辑</span>
+                </div>
+                <a href="/articles/runway-review.html" class="tool-link">查看详细评测</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="articles" id="articles">
+        <h2>📚 最新教程与评测文章</h2>
+        <div class="article-grid">
+            <div class="article-card">
+                <div class="article-img">📝</div>
+                <div class="article-content">
+                    <h3>2026年最佳AI写作工具对比：ChatGPT vs Claude vs Gemini</h3>
+                    <p>全面对比三大AI对话工具在写作任务中的表现，帮你选择最适合的AI写作助手。</p>
+                    <div class="article-meta">
+                        <span>📅 2026-04-28</span>
+                        <span>👁️ 1,250 阅读</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <div class="article-img">🎨</div>
+                <div class="article-content">
+                    <h3>Midjourney实战教程：从入门到精通（附提示词模板）</h3>
+                    <p>手把手教你使用Midjourney生成高质量AI图像，包含100+实用提示词模板。</p>
+                    <div class="article-meta">
+                        <span>📅 2026-04-25</span>
+                        <span>👁️ 2,800 阅读</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <div class="article-img">💻</div>
+                <div class="article-content">
+                    <h3>GitHub Copilot完全指南：提升10倍编程效率</h3>
+                    <p>详细介绍如何配置和使用GitHub Copilot，包含实用技巧和最佳实践。</p>
+                    <div class="article-meta">
+                        <span>📅 2026-04-22</span>
+                        <span>👁️ 980 阅读</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h3>关于我们</h3>
+                <ul>
+                    <li><a href="/about.html">关于AI工具评测网</a></li>
+                    <li><a href="/contact.html">联系我们</a></li>
+                    <li><a href="/privacy.html">隐私政策</a></li>
+                    <li><a href="/disclaimer.html">免责声明</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>热门分类</h3>
+                <ul>
+                    <li><a href="#writing">AI写作工具</a></li>
+                    <li><a href="#image">AI图像生成</a></li>
+                    <li><a href="#video">AI视频制作</a></li>
+                    <li><a href="#code">AI编程助手</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>实用教程</h3>
+                <ul>
+                    <li><a href="#">ChatGPT使用教程</a></li>
+                    <li><a href="#">Midjourney提示词技巧</a></li>
+                    <li><a href="#">AI工具选型指南</a></li>
+                    <li><a href="#">免费AI工具推荐</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI工具评测网. All rights reserved. | 帮你找到最好的AI工具</p>
+        </div>
+    </footer>
+</body>
+</html>
