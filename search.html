@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果 - AI工具评测网</title>
+    <meta name="description" content="搜索AI工具评测内容">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem 0; }
+        .header-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: bold; }
+        .logo a { color: white; text-decoration: none; }
+        nav { display: flex; gap: 2rem; }
+        nav a { color: rgba(255,255,255,0.9); text-decoration: none; font-size: 0.95rem; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+        .search-result-header { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .search-result-header h1 { font-size: 2rem; margin-bottom: 1rem; }
+        .search-box { display: flex; gap: 1rem; }
+        .search-box input { flex: 1; padding: 0.8rem 1.2rem; border: 2px solid #ddd; border-radius: 50px; font-size: 1rem; outline: none; }
+        .search-box button { padding: 0.8rem 2rem; background: #667eea; color: white; border: none; border-radius: 50px; cursor: pointer; font-size: 1rem; }
+        .result-card { background: white; border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .result-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; }
+        .result-card h3 a { color: #667eea; text-decoration: none; }
+        .result-card p { color: #666; font-size: 0.95rem; }
+        .no-results { text-align: center; padding: 3rem; color: #999; }
+        footer { background: #1a1a2e; color: white; padding: 3rem 2rem; margin-top: 4rem; text-align: center; }
+        @media (max-width: 768px) {
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <div class="logo"><a href="/">AI工具评测网</a></div>
+            <nav>
+                <a href="/">首页</a>
+                <a href="/#tools">工具评测</a>
+                <a href="/about.html">关于我们</a>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="search-result-header">
+            <h1 id="search-title">搜索结果</h1>
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="搜索AI工具...">
+                <button onclick="performSearch()">搜索</button>
+            </div>
+        </div>
+        
+        <div id="search-results">
+            <!-- 搜索结果将在这里显示 -->
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2026 AI工具评测网. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // 工具数据（用于搜索）
+        const tools = [
+            { name: 'ChatGPT', url: '/articles/chatgpt-review.html', desc: '最流行的AI对话工具，支持写作、编程、翻译、分析等多种任务。' },
+            { name: 'Midjourney', url: '/articles/midjourney-review.html', desc: '最强大的AI图像生成工具，生成质量极高，艺术风格丰富。' },
+            { name: 'GitHub Copilot', url: '/articles/copilot-review.html', desc: 'AI编程助手，支持多种编程语言，实时代码补全和建议。' },
+            { name: 'Runway ML', url: '/articles/runway-review.html', desc: 'AI视频生成和编辑工具，支持文本生成视频、视频风格转换。' },
+            { name: 'Claude', url: '/articles/claude-review.html', desc: '安全性更高的AI对话工具，适合长文本处理和复杂推理。' },
+            { name: 'Gemini', url: '/articles/gemini-review.html', desc: 'Google推出的AI工具，与Google生态深度集成，实时联网搜索。' },
+            { name: 'Stable Diffusion', url: '/articles/stable-diffusion-review.html', desc: '开源的AI图像生成模型，可本地部署，完全免费使用。' },
+            { name: 'DALL-E 3', url: '/articles/dalle-review.html', desc: 'OpenAI开发的AI图像生成工具，集成在ChatGPT Plus中。' },
+            { name: 'Jasper AI', url: '/articles/jasper-review.html', desc: '专为企业和营销人员设计的AI写作工具，支持30+语言。' },
+            { name: 'Copy.ai', url: '/articles/copyai-review.html', desc: '专注营销文案的AI写作工具，支持95+语言，内置90+模板。' }
+        ];
+        
+        // 获取 URL 参数
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        
+        // 执行搜索
+        function performSearch() {
+            const query = document.getElementById('search-input').value.trim();
+            if (query) {
+                window.location.href = '/search?q=' + encodeURIComponent(query);
+            }
+        }
+        
+        // 显示搜索结果
+        function displayResults() {
+            const query = getQueryParam('q');
+            if (!query) {
+                document.getElementById('search-title').textContent = '请输入搜索关键词';
+                return;
+            }
+            
+            document.getElementById('search-title').textContent = '搜索结果："' + query + '"';
+            document.getElementById('search-input').value = query;
+            
+            const resultsContainer = document.getElementById('search-results');
+            const lowerQuery = query.toLowerCase();
+            
+            const results = tools.filter(tool => 
+                tool.name.toLowerCase().includes(lowerQuery) || 
+                tool.desc.toLowerCase().includes(lowerQuery)
+            );
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results"><h2>未找到相关结果</h2><p>请尝试其他关键词</p></div>';
+                return;
+            }
+            
+            let html = '';
+            results.forEach(tool => {
+                html += `
+                <div class="result-card">
+                    <h3><a href="${tool.url}">${tool.name}</a></h3>
+                    <p>${tool.desc}</p>
+                </div>
+                `;
+            });
+            
+            resultsContainer.innerHTML = html;
+        }
+        
+        // 页面加载时执行搜索
+        window.addEventListener('load', displayResults);
+        
+        // 回车搜索
+        document.getElementById('search-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                performSearch();
+            }
+        });
+    </script>
+</body>
+</html>
